@@ -677,7 +677,7 @@ if __name__ == "__main__":
 
     print("\n========== FLOPs / Params for ORS_CVE ==========")
     print(f"Params          : {params / 1e6:.3f} M")
-    print(f"GFLOs            : {macs / 1e9:.3f} GMac")
+    print(f"GFLOs            : {macs / 1e9:.3f} GFLOs")
 
     print("=================================================\n")
 
