@@ -95,13 +95,13 @@ For example, modify the following paths:
 train_ds = TrainSet(
     lq_root="/path/to/VCP_dataset/LQ_Priors/LD/qp37",
     gt_root="/path/to/VCP_dataset/GT",
-    gop=8,
+    ...
 )
 
 val_ds = ValSet(
     lq_root="/path/to/VCP_dataset/test_18_data/LD/qp37",
     gt_root="/path/to/VCP_dataset/test_18_data/GT",
-    gop=8,
+    ...
 )
 ```
 
