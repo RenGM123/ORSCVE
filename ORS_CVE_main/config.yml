@@ -1,0 +1,47 @@
+dataset:
+  train:
+    gt_size: 256
+    use_flip: true
+    use_rot: true
+    enlarge_ratio: 300 #300
+    batch_size_per_gpu: 32
+    num_worker_per_gpu: 32 #32
+  val:
+    gop: 8 #8
+
+train:
+  pbar_len: 100 #
+  exp_name: qp37_RA #VDTR_CON #改这里#
+  random_seed: 71
+  num_iter: 600000
+  resume:
+  interval_print: 10000
+  interval_val: 300000
+#  interval_print: 50
+#  interval_val: 50
+  pre-val: false #false #true
+  lambda_flow: 0.1
+
+  optim:
+    type: Adam
+    lr: !!float 1e-4  # 1e-4
+    betas: [ 0.9, 0.999 ]
+    eps: !!float 1e-08
+
+  loss:
+    type: CharbonnierLoss
+    eps: 1.0e-6
+
+  scheduler:
+    is_on: False
+    type: CosineAnnealingRestartLR
+    periods: [1500000]  # epoch interval
+    restart_weights: [1]
+    eta_min: !!float 1e-6
+
+  criterion:
+    type: PSNR
+    unit: dB
+
+test:
+  restore_iter: 0
