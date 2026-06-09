@@ -87,7 +87,7 @@ The pretrained model weights are publicly available at [Baidu Netdisk](https://p
 After downloading the weights, please place them in a suitable folder, for example:
 
 ```text
-ORS_CVE_main/exp/qp37_RA/
+ORS_CVE_main/exp/vcp_ldb_qp37/
 ```
 
 ## Training
@@ -133,20 +133,11 @@ ORS_CVE_main/exp/
 For example:
 
 ```text
-ORS_CVE_main/exp/qp37_RA/
+ORS_CVE_main/exp/vcp_ldb_qp37/
 ├── log.log
-├── ckp_600000.pt
+├── ckp_ldb_qp37.pt
 └── val_metric_log.txt
 ```
-
-To resume training from a checkpoint:
-
-```bash
-CUDA_VISIBLE_DEVICES=0 python train_ors.py \
-  --opt_path config.yml \
-  --resume exp/qp37_RA/ckp_300000.pt
-```
-
 ## Testing
 
 Enter the code directory:
@@ -159,7 +150,7 @@ Run testing with a pretrained checkpoint:
 
 ```bash
 CUDA_VISIBLE_DEVICES=0 python test_ors.py \
-  --ckpt exp/qp37_RA/ckp_ra_qp37.pt \
+  --ckpt exp/vcp_ldb_qp37/ckp_ldb_qp37.pt \
   --lq_root /path/to/VCP_dataset/test_18_data/LD/qp37 \
   --gt_root /path/to/VCP_dataset/test_18_data/GT \
   --gop 8 \
@@ -169,32 +160,6 @@ CUDA_VISIBLE_DEVICES=0 python test_ors.py \
 
 The script reports the PSNR and SSIM results of the compressed input and the enhanced output.
 
-To save the evaluation results as a CSV file:
-
-```bash
-CUDA_VISIBLE_DEVICES=0 python test_ors.py \
-  --ckpt exp/qp37_RA/ckp_ra_qp37.pt \
-  --lq_root /path/to/VCP_dataset/test_18_data/LD/qp37 \
-  --gt_root /path/to/VCP_dataset/test_18_data/GT \
-  --gop 8 \
-  --batch_size 1 \
-  --num_workers 8 \
-  --save_csv results/qp37_results.csv
-```
-
-To save the enhanced Y-channel frames as PNG images:
-
-```bash
-CUDA_VISIBLE_DEVICES=0 python test_ors.py \
-  --ckpt exp/qp37_RA/ckp_ra_qp37.pt \
-  --lq_root /path/to/VCP_dataset/test_18_data/LD/qp37 \
-  --gt_root /path/to/VCP_dataset/test_18_data/GT \
-  --gop 8 \
-  --batch_size 1 \
-  --num_workers 8 \
-  --save_y \
-  --save_y_dir results/enhanced_y_png
-```
 
 ## Evaluation Output
 
@@ -208,8 +173,6 @@ SSIM of compressed input
 SSIM of enhanced output
 Delta SSIM
 ```
-
-If `--save_csv` is specified, the per-video metrics will be saved to a CSV file.
 
 ## Notes
 
