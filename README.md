@@ -8,17 +8,6 @@ The pretrained model weights are publicly available at [Baidu Netdisk](https://p
 
 The VCP dataset can be obtained from the [CPGA repository](https://github.com/VQE-CPGA/CPGA).
 Due to the large scale of the extended MFQE 2.0 datasets generated with different coding configurations, GOP structures, and codecs, we plan to make them publicly available in the future.
-# ORS-CVE
-
-Official implementation of **Compressed Video Quality Enhancement Based on Optimal Reference Selection**.
-
-ORS-CVE is a compressed video enhancement framework that introduces an optimal reference selection strategy and bitstream-prior-guided restoration for improving compressed video quality.
-
-## Overview
-
-Compressed video enhancement aims to reduce compression artifacts and recover fine details from decoded low-quality videos. Existing multi-frame enhancement methods usually use neighboring frames as references, which may introduce redundant information and propagate coding errors along the prediction chain.
-
-ORS-CVE addresses this issue by selecting a more suitable reference frame according to the coding prediction structure. The selected reference frame, motion-vector prior, and residual prior are jointly used to guide video quality enhancement.
 
 ## Repository Structure
 
